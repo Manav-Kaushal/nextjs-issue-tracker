@@ -3,21 +3,16 @@ import Image from "next/image";
 
 export const Footer: React.FC = () => {
     return (
-        <div className="text-center py-5 bg-gray-800">
+        <div className="py-5 text-center bg-gray-800">
             <a
                 href="https://github.com/pankod"
                 target="_blank"
                 className="block mb-3"
             >
-                <Image
-                    src="/icons/pankod-icon.svg"
-                    alt="pankod"
-                    width="140"
-                    height="28"
-                />
+                <h2 className="text-2xl text-white">NextJS Issue Tracker</h2>
             </a>
 
-            <ul className="flex justify-center list-none p-0 m-0">
+            <ul className="flex justify-center p-0 m-0 list-none">
                 <li className="mx-3">
                     <Image
                         src="/icons/github-icon.svg"
