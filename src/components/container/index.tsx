@@ -1,3 +1,5 @@
-export const Container = ({ children }) => {
-    return <div className="min-h-screen flex flex-col">{children}</div>;
+import { ContainerInterface } from "@interfaces/Components";
+
+export const Container: React.FC<ContainerInterface> = ({ children }) => {
+    return <div className="flex flex-col min-h-screen">{children}</div>;
 };
