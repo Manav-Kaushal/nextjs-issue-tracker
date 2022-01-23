@@ -9,6 +9,7 @@ import useStore from "src/store";
 
 const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
     const formData = useStore((state) => state.formState);
+    const { addAllClosed } = useStore();
     const { setFormState } = useStore();
 
     const { uuid, description, severity, assignedTo, isClosed } = data;
@@ -17,6 +18,7 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
         const tempObj = formData.find((item: any) => item.uuid === data.uuid);
         tempObj.isClosed = true;
         setFormState([...formData]);
+        addAllClosed();
     };
 
     const handleDeleteClick = () => {
