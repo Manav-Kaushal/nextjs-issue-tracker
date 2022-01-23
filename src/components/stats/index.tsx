@@ -13,20 +13,21 @@ export const Stats: React.FC = () => {
     const [totalOpen, setTotalOpen] = useState(0);
     const [totalClosed, setTotalClosed] = useState(0);
     const formData = useStore((state) => state.formState);
-    const total = formData.length;
+    const { allClosed, allRaised } = useStore();
+
+    console.log("allClosed", allClosed);
 
     useEffect(() => {
         setTotalOpen(formData.filter((data) => data.isClosed !== true).length);
         setTotalClosed(
-            totalClosed +
-                formData.filter((data) => data.isClosed === true).length,
+            formData.filter((data) => data.isClosed === true).length,
         );
     }, [formData]);
 
     const stats = [
         {
-            name: "Total Issues",
-            stat: `${total}`,
+            name: "Total Issues Opened",
+            stat: `${allRaised}`,
             icon: (
                 <HiOutlineInformationCircle
                     className="w-[18px] h-[18px] text-red-500"
@@ -36,7 +37,18 @@ export const Stats: React.FC = () => {
             textColor: "text-red-500",
         },
         {
-            name: "Open Issues",
+            name: "Total Issues Closed",
+            stat: `${allClosed}`,
+            icon: (
+                <HiOutlineInformationCircle
+                    className="w-[18px] h-[18px] text-red-500"
+                    aria-hidden="true"
+                />
+            ),
+            textColor: "text-red-500",
+        },
+        {
+            name: "Currently Open Issues",
             stat: `${totalOpen}`,
             icon: (
                 <HiOutlineClock
@@ -47,7 +59,7 @@ export const Stats: React.FC = () => {
             textColor: "text-yellow-500",
         },
         {
-            name: "Close Issues",
+            name: "Currently Closed Issues",
             stat: `${totalClosed}`,
             icon: (
                 <HiOutlineCheckCircle
@@ -60,15 +72,18 @@ export const Stats: React.FC = () => {
     ];
 
     return (
-        <div className="p-6 my-10 bg-gray-100 rounded-lg">
-            <h3 className="text-lg font-medium leading-3 text-gray-900">
-                Some Stats for Nerds:
+        <div className="p-6 my-6 bg-gray-100 rounded-lg">
+            <h3 className="text-lg font-medium leading-6 text-gray-900">
+                Some stats for nerds:{" "}
             </h3>
-            <dl className="grid grid-cols-1 gap-5 mt-5 sm:grid-cols-3">
+            <small className="text-sm leading-3">
+                (These stats are maintained with zustand store)
+            </small>
+            <dl className="grid grid-cols-1 gap-5 mt-5 sm:grid-cols-2">
                 {stats.map((item) => (
                     <div
                         key={item.name}
-                        className="px-4 py-5 overflow-hidden bg-white rounded-lg shadow sm:p-6"
+                        className="px-3 py-3 overflow-hidden bg-white rounded-lg shadow sm:p-5"
                     >
                         <dt
                             className={`flex items-center text-sm font-medium truncate ${item.textColor}`}

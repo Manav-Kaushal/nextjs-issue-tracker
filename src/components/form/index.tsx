@@ -38,8 +38,10 @@ const severityValues = [
 export const IssueForm: React.FC = () => {
     const { setFormState } = useStore();
     const formData = useStore((state) => state.formState);
+    const { addAllRaised } = useStore();
 
     const handleOnSubmit = (values: FormValues) => {
+        addAllRaised();
         const unique_id = uuid().split("-").join("");
         setFormState([
             ...formData,
@@ -48,7 +50,7 @@ export const IssueForm: React.FC = () => {
     };
 
     return (
-        <div className="px-16 py-5 font-light bg-gray-700 select-none">
+        <div className="py-5 pl-16 pr-6 font-light bg-gray-700 select-none">
             <div className="container mx-auto sticky top-[4.85rem]">
                 <div className="w-full p-6 bg-gray-100 rounded-md">
                     <Formik
