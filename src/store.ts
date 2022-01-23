@@ -4,19 +4,8 @@ import create from "zustand";
 const useStore = create((set) => ({
     formValues: [
         { description: "Test", severity: "Low", assignedTo: "Manav" },
-        { description: "Test2", severity: "Medium", assignedTo: "Sheetal" },
+        { description: "Test2", severity: "Medium", assignedTo: "Test User" },
     ],
-    setFormValues: (values: FormValues) =>
-        set((state) => ({
-            values: [
-                {
-                    description: values.description,
-                    severity: values.severity,
-                    assignedTo: values.assignedTo,
-                },
-                ...state.values,
-            ],
-        })),
 }));
 
 export default useStore;
