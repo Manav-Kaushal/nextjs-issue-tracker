@@ -12,7 +12,6 @@ const Home: React.FC = () => {
     return (
         <Container>
             <Header />
-            {/* <Hero /> */}
             <div className="grid min-h-screen grid-cols-2">
                 <IssueForm />
                 <IssuesDisplayPanel />

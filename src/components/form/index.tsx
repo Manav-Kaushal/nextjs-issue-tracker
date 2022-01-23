@@ -38,7 +38,7 @@ const severityValues = [
 
 export const IssueForm: React.FC = () => {
     return (
-        <div className="px-16 py-5 font-light bg-gray-700">
+        <div className="px-16 py-5 font-light bg-gray-700 select-none">
             <div className="container mx-auto sticky top-[4.85rem]">
                 <div className="w-full p-6 bg-gray-100 rounded-md">
                     <Formik
@@ -48,8 +48,6 @@ export const IssueForm: React.FC = () => {
                         validateOnMount
                     >
                         {(formik) => {
-                            console.log(formik);
-
                             return (
                                 <Form>
                                     <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -85,8 +83,7 @@ export const IssueForm: React.FC = () => {
                                                             id="description"
                                                             name="description"
                                                             className="block w-full p-2 border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
-                                                            placeholder="Write the description for
-                                                    the issue"
+                                                            placeholder="Write the description for the issue"
                                                         />
                                                     </div>
                                                 </div>
@@ -181,7 +178,7 @@ export const IssueForm: React.FC = () => {
                                             <button
                                                 type="submit"
                                                 disabled={!formik.isValid}
-                                                className="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:bg-gray-500"
+                                                className="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:bg-gray-500 disabled:cursor-not-allowed"
                                             >
                                                 Add Issue
                                             </button>
