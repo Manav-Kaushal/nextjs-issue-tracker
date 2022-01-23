@@ -13,3 +13,7 @@ export function getAnimations(items: number): string {
     }
     return str;
 }
+
+export function capitalizeFirstLetter(string: string): string {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

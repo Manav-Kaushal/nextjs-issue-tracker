@@ -1,18 +1,16 @@
 import * as Yup from "yup";
+import { v4 as uuid } from "uuid";
 import React from "react";
 import { FormValues } from "@interfaces/FormValues";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import useStore from "src/store";
 
 const initialValues = {
+    uuid: "",
     description: "",
     severity: "low",
     assignedTo: "",
-};
-
-const onSubmit = (values: FormValues) => {
-    setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-    }, 500);
+    isClosed: false,
 };
 
 const validationSchema = Yup.object({
@@ -37,6 +35,20 @@ const severityValues = [
 ];
 
 export const IssueForm: React.FC = () => {
+    const { setFormState } = useStore();
+    const formData = useStore((state) => state.formState);
+
+    const handleOnSubmit = (values: FormValues) => {
+        console.log("values: ", values);
+
+        const unique_id = uuid().split("-").join("");
+
+        setFormState([
+            ...formData,
+            { ...values, uuid: unique_id, isClosed: false },
+        ]);
+    };
+
     return (
         <div className="px-16 py-5 font-light bg-gray-700 select-none">
             <div className="container mx-auto sticky top-[4.85rem]">
@@ -44,7 +56,13 @@ export const IssueForm: React.FC = () => {
                     <Formik
                         initialValues={initialValues}
                         validationSchema={validationSchema}
-                        onSubmit={onSubmit}
+                        onSubmit={(values, { resetForm }) => {
+                            handleOnSubmit(values);
+                            resetForm({
+                                values: initialValues,
+                            });
+                        }}
+                        enableReinitialize={true}
                         validateOnMount
                     >
                         {(formik) => {
@@ -92,7 +110,7 @@ export const IssueForm: React.FC = () => {
                                             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:py-5">
                                                 <label
                                                     htmlFor="severity"
-                                                    className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                                                    className="block text-sm font-medium text-gray-700"
                                                 >
                                                     Severity{" "}
                                                     <span className="text-red-500">
