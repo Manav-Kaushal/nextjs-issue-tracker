@@ -4,6 +4,7 @@ import React from "react";
 import { FormValues } from "@interfaces/FormValues";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import useStore from "src/store";
+import { Stats } from "@components/stats";
 
 const initialValues = {
     uuid: "",
@@ -39,10 +40,7 @@ export const IssueForm: React.FC = () => {
     const formData = useStore((state) => state.formState);
 
     const handleOnSubmit = (values: FormValues) => {
-        console.log("values: ", values);
-
         const unique_id = uuid().split("-").join("");
-
         setFormState([
             ...formData,
             { ...values, uuid: unique_id, isClosed: false },
@@ -196,7 +194,7 @@ export const IssueForm: React.FC = () => {
                                             <button
                                                 type="submit"
                                                 disabled={!formik.isValid}
-                                                className="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:bg-gray-500 disabled:cursor-not-allowed"
+                                                className="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-purple-600 border border-transparent rounded-md shadow-sm hover:bg-purple-700 focus:outline-none disabled:bg-gray-500 disabled:cursor-not-allowed"
                                             >
                                                 Add Issue
                                             </button>
@@ -207,6 +205,7 @@ export const IssueForm: React.FC = () => {
                         }}
                     </Formik>
                 </div>
+                <Stats />
             </div>
         </div>
     );

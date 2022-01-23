@@ -1,7 +1,6 @@
 import { Transition } from "@headlessui/react";
-import { FormValues } from "@interfaces/FormValues";
 import { IssueCardInterface } from "@interfaces/GlobalInterfaces";
-import React, { useState } from "react";
+import React from "react";
 import {
     HiOutlineInformationCircle,
     HiOutlineUserCircle,
@@ -13,16 +12,23 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
     const { setFormState } = useStore();
 
     const { uuid, description, severity, assignedTo, isClosed } = data;
-    const [open, setOpen] = useState(true);
 
-    const handleRemoveCard = () => {
-        const tempArr: any = formData.filter(
-            (item: any) => item.uuid !== data.uuid,
-        );
-        setFormState([...tempArr]);
+    const handleCloseClick = () => {
+        const tempObj = formData.find((item: any) => item.uuid === data.uuid);
+        tempObj.isClosed = true;
+        setFormState([...formData]);
     };
 
-    console.log(isClosed);
+    const handleDeleteClick = () => {
+        if (!isClosed) {
+            alert("You sure to delete this issue? It's not been closed yet!");
+        } else {
+            const tempArr: any = formData.filter(
+                (item: any) => item.uuid !== data.uuid,
+            );
+            setFormState([...tempArr]);
+        }
+    };
 
     return (
         <Transition
@@ -35,13 +41,23 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
         >
-            <div className="p-4 my-4 bg-white rounded-md shadow-md">
+            <div
+                className={`p-4 my-4 my-transition rounded-md shadow-md ${
+                    isClosed ? "bg-green-100/80" : "bg-yellow-100/80"
+                }`}
+            >
                 <div>
                     <p className="text-sm font-semibold">Unique ID: {uuid}</p>
                 </div>
                 <div className="my-2">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
-                        {open ? "Open" : "Closed"}
+                    <span
+                        className={`inline-flex items-center px-2 py-0.5 rounded text-xs my-transition font-medium ${
+                            isClosed
+                                ? "bg-green-200 text-green-800"
+                                : "bg-yellow-200 text-yellow-800"
+                        }`}
+                    >
+                        {isClosed ? "Closed" : "Open"}
                     </span>
                 </div>
                 <div>
@@ -80,14 +96,16 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
                     <div className="flex mt-4 mb-2">
                         <button
                             type="button"
-                            className={`inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-yellow-500 border border-transparent rounded-md shadow-sm hover:bg-yellow-600`}
+                            className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-white bg-yellow-500 border border-transparent rounded-md shadow-sm hover:bg-yellow-600 disabled:bg-gray-500 disabled:cursor-not-allowed"
+                            disabled={isClosed}
+                            onClick={handleCloseClick}
                         >
                             Close
                         </button>
                         <button
                             type="button"
                             className="inline-flex items-center px-3 py-2 ml-2 text-sm font-medium leading-4 text-white bg-red-500 border border-transparent rounded-md shadow-sm hover:bg-red-600"
-                            onClick={handleRemoveCard}
+                            onClick={handleDeleteClick}
                         >
                             Delete
                         </button>

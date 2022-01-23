@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .my-transition {
     transition: color, background-color, border-color, text-decoration-color,
         fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;

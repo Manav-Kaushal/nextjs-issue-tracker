@@ -5,7 +5,7 @@ import { Button, Logo } from "@components";
 
 export const Header: React.FC = () => {
     return (
-        <header className="sticky top-0 z-50 flex items-center justify-between px-16 text-white bg-purple-700 shadow-md">
+        <header className="sticky top-0 z-[100] flex items-center justify-between px-16 text-white bg-purple-700 drop-shadow-md">
             <Logo />
 
             <nav>
