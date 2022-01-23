@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import { HiOutlineCheckCircle, HiOutlineX } from "react-icons/hi";
 
 export const Notification: React.FC = () => {
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     return (
         <>
