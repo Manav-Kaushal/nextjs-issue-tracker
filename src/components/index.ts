@@ -7,3 +7,4 @@ export { Card } from "./card";
 export { Footer } from "./footer";
 export { Container } from "./container";
 export { Notification } from "./notification";
+export { Stats } from "./stats";

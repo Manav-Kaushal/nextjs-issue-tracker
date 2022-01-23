@@ -6,7 +6,7 @@ const TechStack: React.FC = () => {
     return (
         <Container>
             <Header />
-            <div className="bg-purple-100">
+            <div className="bg-gray-700">
                 <div className="container flex-1 max-w-screen-xl p-5 mx-auto my-8 ">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                         {techStack.plugins.map((plugin) => (

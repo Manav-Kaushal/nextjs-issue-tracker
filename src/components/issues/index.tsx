@@ -6,15 +6,16 @@ import useStore from "src/store";
 
 export const IssuesDisplayPanel: React.FC = () => {
     const formData = useStore((state) => state.formState);
-    console.log("Form Data:", formData);
 
     return (
         <div className="px-16 py-5 font-light bg-gray-700">
             <div className="container mx-auto">
-                <div className="w-full p-6 bg-purple-200 rounded-md">
+                <div className="w-full p-6 bg-gray-100 rounded-md">
                     {formData.length === 0 ? (
                         <div className="grid place-items-center">
-                            <h2 className="text-4xl font-bold">Oops...</h2>
+                            <h2 className="text-2xl font-semibold">
+                                Oops... no issues found!
+                            </h2>
                             <LottieAnimator
                                 src={Searching}
                                 width={400}
@@ -23,10 +24,12 @@ export const IssuesDisplayPanel: React.FC = () => {
                         </div>
                     ) : (
                         <>
-                            <div className="text-2xl font-semibold">
-                                Open Issues:
+                            <div className="text-left">
+                                <p className="text-2xl font-semibold">
+                                    Open Issues:
+                                </p>
                             </div>
-                            {formData?.map((data) => (
+                            {formData.map((data) => (
                                 <IssueCard data={data} />
                             ))}
                         </>

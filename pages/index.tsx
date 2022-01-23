@@ -12,7 +12,7 @@ const Home: React.FC = () => {
     return (
         <Container>
             <Header />
-            <div className="grid min-h-screen grid-cols-2">
+            <div className="grid min-h-screen grid-col-1 md:grid-cols-2">
                 <IssueForm />
                 <IssuesDisplayPanel />
             </div>
