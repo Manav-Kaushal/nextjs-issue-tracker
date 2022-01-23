@@ -4,6 +4,7 @@ import React from "react";
 import { FormValues } from "@interfaces/FormValues";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import useStore from "src/store";
+import { Listbox } from "@headlessui/react";
 import { Stats } from "@components/stats";
 
 const initialValues = {
@@ -101,8 +102,12 @@ export const IssueForm: React.FC = () => {
                                                             id="description"
                                                             name="description"
                                                             className="block w-full p-2 border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
-                                                            placeholder="Write the description for the issue"
                                                         />
+                                                        <p className="text-sm text-gray-500">
+                                                            Write the
+                                                            description for the
+                                                            issue...
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
