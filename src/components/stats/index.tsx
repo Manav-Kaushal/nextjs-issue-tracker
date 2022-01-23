@@ -72,7 +72,7 @@ export const Stats: React.FC = () => {
     ];
 
     return (
-        <div className="p-6 my-6 bg-gray-100 rounded-lg">
+        <div className="p-6 my-6 bg-gray-100 rounded-md">
             <h3 className="text-lg font-medium leading-6 text-gray-900">
                 Some stats for nerds:{" "}
             </h3>
