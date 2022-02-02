@@ -19,3 +19,14 @@ export interface LottiAnimatorInterface {
     height?: number;
     width?: number;
 }
+
+export interface HomeInterface {
+    session: {
+        expires: string;
+        user: {
+            name: string;
+            email: string;
+            image: string;
+        };
+    };
+}

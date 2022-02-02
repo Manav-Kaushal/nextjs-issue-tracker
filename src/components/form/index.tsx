@@ -51,7 +51,7 @@ export const IssueForm: React.FC = () => {
     };
 
     return (
-        <div className="py-5 pl-16 pr-6 font-light bg-gray-700 select-none">
+        <div className="py-5 pl-16 pr-6 font-light select-none">
             <div className="container mx-auto sticky top-[4.85rem]">
                 <div className="w-full p-6 bg-gray-100 rounded-md">
                     <Formik

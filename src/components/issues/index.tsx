@@ -8,7 +8,7 @@ export const IssuesDisplayPanel: React.FC = () => {
     const formData = useStore((state) => state.formState);
 
     return (
-        <div className="py-5 pl-6 pr-16 font-light bg-gray-700">
+        <div className="py-5 pl-6 pr-16 font-light">
             <div className="container mx-auto">
                 <div className="w-full p-6 bg-gray-100 rounded-md">
                     {formData.length === 0 ? (
