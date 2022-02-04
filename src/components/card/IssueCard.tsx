@@ -1,15 +1,13 @@
 import { IssueCardInterface } from "@interfaces/GlobalInterfaces";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import {
     HiOutlineInformationCircle,
     HiOutlineUserCircle,
 } from "react-icons/hi";
 import useStore from "src/store";
-import { gsap } from "gsap";
 
 const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
     const formData = useStore((state) => state.formState);
-    const issueCardRef = useRef();
     const { addAllClosed } = useStore();
     const { setFormState } = useStore();
 
@@ -33,26 +31,15 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
         }
     };
 
-    useEffect(() => {
-        gsap.from(".issueCard", {
-            duration: 0.5,
-            scale: 0.5,
-            opacity: 0,
-            stagger: 0.2,
-        });
-    }, [issueCardRef]);
-
     return (
-        <div className="issueCard">
+        <div>
             <div
                 className={`p-4 my-4 my-transition rounded-md shadow-md ${
                     isClosed ? "bg-green-100/80" : "bg-yellow-100/80"
                 }`}
             >
-                <div>
-                    <p className="text-sm font-semibold">Unique ID: {uuid}</p>
-                </div>
-                <div className="my-2">
+                <div className="flex items-center justify-between">
+                    <p className="text-sm font-semibold">UID: {uuid}</p>
                     <span
                         className={`inline-flex items-center px-2 py-0.5 rounded text-xs my-transition font-medium ${
                             isClosed
@@ -63,6 +50,7 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
                         {isClosed ? "Closed" : "Open"}
                     </span>
                 </div>
+
                 <div>
                     <h2 className="text-2xl font-semibold leading-7">
                         {description}
