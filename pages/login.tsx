@@ -13,7 +13,7 @@ const Login = ({ session }) => {
     }, []);
 
     useEffect(() => {
-        if (session) return Router.push("/");
+        if (session) Router.push("/");
     }, [session]);
 
     if (session) return null;
