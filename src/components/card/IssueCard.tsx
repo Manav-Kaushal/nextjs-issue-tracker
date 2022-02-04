@@ -1,14 +1,15 @@
-import { Transition } from "@headlessui/react";
 import { IssueCardInterface } from "@interfaces/GlobalInterfaces";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
     HiOutlineInformationCircle,
     HiOutlineUserCircle,
 } from "react-icons/hi";
 import useStore from "src/store";
+import { gsap } from "gsap";
 
 const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
     const formData = useStore((state) => state.formState);
+    const issueCardRef = useRef();
     const { addAllClosed } = useStore();
     const { setFormState } = useStore();
 
@@ -32,17 +33,17 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
         }
     };
 
+    useEffect(() => {
+        gsap.from(".issueCard", {
+            duration: 0.5,
+            scale: 0.5,
+            opacity: 0,
+            stagger: 0.2,
+        });
+    }, [issueCardRef]);
+
     return (
-        <Transition
-            appear={true}
-            show={true}
-            enter="transition-opacity duration-75"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity duration-150"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-        >
+        <div className="issueCard">
             <div
                 className={`p-4 my-4 my-transition rounded-md shadow-md ${
                     isClosed ? "bg-green-100/80" : "bg-yellow-100/80"
@@ -114,7 +115,7 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
                     </div>
                 </div>
             </div>
-        </Transition>
+        </div>
     );
 };
 

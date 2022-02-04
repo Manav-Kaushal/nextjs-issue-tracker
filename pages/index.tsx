@@ -21,15 +21,14 @@ const Home: React.FC<HomeInterface> = ({ session }) => {
         <Container>
             <Header />
 
-            {!session && (
+            {/* {!session && (
                 <>
                     <button onClick={() => signIn()}>Sign In</button>
                 </>
-            )}
+            )} */}
 
             {session && (
                 <div className="grid min-h-screen bg-gradient-to-tr from-gray-500 to-gray-700 grid-col-1 md:grid-cols-2">
-                    {/* <button onClick={() => signOut()}>Sign Out?</button> */}
                     <IssueForm />
                     <IssuesDisplayPanel />
                 </div>

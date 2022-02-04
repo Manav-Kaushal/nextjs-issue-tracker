@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
     const { data: session, status } = useSession();
     const loading = status === "loading";
 
-    console.log({ session });
+    console.log({ session, loading });
 
     return (
         <header className="sticky top-0 z-[100] flex items-center justify-between px-16 text-white bg-purple-700 drop-shadow-md">

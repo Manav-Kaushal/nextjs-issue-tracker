@@ -30,7 +30,7 @@ export const AlertCard: React.FC = () => {
                         </button>
                         <button
                             type="button"
-                            className="w-full px-4 py-2 text-base font-semibold text-center text-white text-indigo-500 transition duration-200 ease-in bg-white rounded-lg shadow-md hover:bg-gray-100 focus:ring-indigo-500 focus:ring-offset-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 "
+                            className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-white rounded-lg shadow-md hover:bg-gray-100 focus:ring-indigo-500 focus:ring-offset-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 "
                         >
                             Cancel
                         </button>

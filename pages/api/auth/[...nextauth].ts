@@ -26,7 +26,7 @@ export default NextAuth({
             clientId: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
         }),
-        // ...add more providers here
+        //todo ...add more providers here
     ],
     adapter: MongoDBAdapter(clientPromise),
     pages: {
