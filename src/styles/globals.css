@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 html::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 html {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .my-transition {
@@ -21,4 +21,30 @@ html {
 
 .error {
     color: red;
+}
+
+.gradient-background {
+    background: linear-gradient(
+        224deg,
+        #69cec6,
+        #b7a459,
+        #16bacd,
+        #6fa987,
+        #34adde,
+        #bcfec5
+    );
+    background-size: 360% 360%;
+    animation: gradient-animation 48s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }

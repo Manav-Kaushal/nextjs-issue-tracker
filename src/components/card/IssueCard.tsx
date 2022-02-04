@@ -1,4 +1,3 @@
-import { Transition } from "@headlessui/react";
 import { IssueCardInterface } from "@interfaces/GlobalInterfaces";
 import React from "react";
 import {
@@ -33,25 +32,14 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
     };
 
     return (
-        <Transition
-            appear={true}
-            show={true}
-            enter="transition-opacity duration-75"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity duration-150"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-        >
+        <div>
             <div
                 className={`p-4 my-4 my-transition rounded-md shadow-md ${
                     isClosed ? "bg-green-100/80" : "bg-yellow-100/80"
                 }`}
             >
-                <div>
-                    <p className="text-sm font-semibold">Unique ID: {uuid}</p>
-                </div>
-                <div className="my-2">
+                <div className="flex items-center justify-between">
+                    <p className="text-sm font-semibold">UID: {uuid}</p>
                     <span
                         className={`inline-flex items-center px-2 py-0.5 rounded text-xs my-transition font-medium ${
                             isClosed
@@ -62,6 +50,7 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
                         {isClosed ? "Closed" : "Open"}
                     </span>
                 </div>
+
                 <div>
                     <h2 className="text-2xl font-semibold leading-7">
                         {description}
@@ -114,7 +103,7 @@ const IssueCard: React.FC<IssueCardInterface> = ({ data }) => {
                     </div>
                 </div>
             </div>
-        </Transition>
+        </div>
     );
 };
 
